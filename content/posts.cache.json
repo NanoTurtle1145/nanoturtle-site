@@ -1,0 +1,115 @@
+[
+ {
+  "title": "HTML测试",
+  "link": "https://blog.nanoturtle.cn/index.php/2026/11/05/1131/",
+  "date": "Wed, 04 Nov 2026 16:30:24 +0000",
+  "desc": "该文章标题为HTML测试，正文内容仅包含提示“点击这里进入”，未提供实质性信息。 HTML测试 最先出现在 NanoTurtle的小窝 。",
+  "cats": [
+   "未分类",
+   "HTML",
+   "测试页面",
+   "网页开发"
+  ]
+ },
+ {
+  "title": "武汉THO小记",
+  "link": "https://blog.nanoturtle.cn/index.php/2026/10/20/wuhan-tho-trip/",
+  "date": "Mon, 19 Oct 2026 16:34:51 +0000",
+  "desc": "作者记录了2026年10月5日至6日的武汉THO之行，先到汉口游览黄鹤楼，再参加人数众多的展会，因现场拥挤，原本用于赠送的几张CD直到撤展后才送出。此行还去了热闹的春雪吃茶屋，返程坐十一小时硬座回杭州，途中流鼻血、手机几乎没电，抵达后发烧，但仍觉得这是自己走过最远的地方，并期待中考后再出游。 武汉THO小记 最先出现在 NanoTurtle的小窝 。",
+  "cats": [
+   "东方Project",
+   "同人展会",
+   "旅行游记"
+  ]
+ },
+ {
+  "title": "S24 为什么跑不了 DirtyFrag",
+  "link": "https://blog.nanoturtle.cn/index.php/2026/09/27/galaxy-s24-dirtyfrag-kernel/",
+  "date": "Sun, 27 Sep 2026 08:50:30 +0000",
+  "desc": "DirtyFrag在GalaxyS23（5.15）和S25（6.6.98）上可运行，在S24全系（6.1.x）却失败。文章指出，关键障碍是提权链唯一的写原语——篡改只读文件页缓存，而非后续模块注入或SELinux步骤。作者从ESP解密源码推导出ICV覆盖范围恒为40字节，随包ICV长度必须匹配SA的authsize，并通过可证伪预测和真机测试排查IV、HMAC等构造错误；目标文件MD5前后未变，支持其结构性不通的结论。 S24 为什么跑不了 DirtyFrag 最先出现在 NanoTurtle的小窝 。",
+  "cats": [
+   "科技",
+   "三星手机",
+   "安卓内核",
+   "漏洞利用"
+  ]
+ },
+ {
+  "title": "一个月以来，我干了些什么？",
+  "link": "https://blog.nanoturtle.cn/index.php/2026/09/19/what-i-did-this-month/",
+  "date": "Sat, 19 Sep 2026 06:08:33 +0000",
+  "desc": "一个月的主线是把三星S24 Ultra国行免解锁root从单机偶然成功打磨成可复现、可审计、可快速适配新固件的流水线。核心结论是载荷按内核构建定标而非按机型，同构建号不同机型可共用，国行与外版不可混用，内核版本不同必须单独定标。定标流程已从下载14GB全包手抄偏移压缩为下载120MB、跑三个脚本、十几分钟完成。DZF2与DZH3同内核线，十万余符号中仅七个静态字符串不同，载荷直接复用；CZB2属另一条线则需单独定标。 一个月以来，我干了些什么？ 最先出现在 NanoTurtle的小窝 。",
+  "cats": [
+   "科技",
+   "Android",
+   "KernelSU",
+   "Root 权限",
+   "三星刷机"
+  ]
+ },
+ {
+  "title": "东方红魔乡：新典初体验",
+  "link": "https://blog.nanoturtle.cn/index.php/2026/09/10/touhou-koumakyou-shinten-review/",
+  "date": "Thu, 10 Sep 2026 15:03:55 +0000",
+  "desc": "《东方红魔乡：新典》初体验认为游戏目前更像半成品：虽支持十六比九画面，却主要只是扩展显示并添加stage名称；作为纵向弹幕射击游戏，画面比例变化的实际意义有限。弹幕覆盖符卡人物立绘，层级表现疑似存在问题。操作方面，自机移动速度较原典更快，增加躲避难度。发售时豪华版97.75元、普通版69元，并减免15%，后续仍待深入游玩。 东方红魔乡：新典初体验 最先出现在 NanoTurtle的小窝 。",
+  "cats": [
+   "东方Project",
+   "游戏"
+  ]
+ },
+ {
+  "title": "S24 Ultra One UI 8.5国行免解锁 Root 实践：基于 CVE-2026-43499 的临时提权方案",
+  "link": "https://blog.nanoturtle.cn/index.php/2026/08/16/s24-ultra-oneui-root-cve-2026-43499/",
+  "date": "Sun, 16 Aug 2026 15:25:28 +0000",
+  "desc": "记录Samsung Galaxy S24 Ultra国行（SM-S9280，OneUI 8.5）利用CVE-2026-43499漏洞实现免解锁临时Root的完整过程。方案从KASLR滑动恢复、管道内存准备到伪造workqueue注入，适配中需修正国行独有的kmalloc_caches偏移、清理残留进程的管道配额占用、解决worklist竞态导致panic等问题。最终封装为一键运行App，不解锁bootloader、不熔断KNOX，但每次重启后需重新运行。 S24 Ultra One UI 8.5国行免解锁 Root 实践：基于 CVE-2026-43499 的临时提权方案 最先出现在 NanoTurtle的小窝 。",
+  "cats": [
+   "科技",
+   "Android",
+   "KernelSU",
+   "Root 权限",
+   "三星刷机"
+  ]
+ },
+ {
+  "title": "一加13T刷机实录",
+  "link": "https://blog.nanoturtle.cn/index.php/2026/07/27/oneplus-13t-flashing-guide/",
+  "date": "Mon, 27 Jul 2026 06:24:29 +0000",
+  "desc": "一加13T刷机需先解锁Bootloader并关闭分区校验，再刷入TWRP，通过ADB侧载依次刷入701底包和类原生ROM。注意ColorOS 16.0.3.502版本对应已熔断的701底包，解锁会清除所有数据，完成后需恢复出厂设置和格式化Data方可正常开机。 一加13T刷机实录 最先出现在 NanoTurtle的小窝 。",
+  "cats": [
+   "科技",
+   "ColorOS刷机",
+   "一加刷机"
+  ]
+ },
+ {
+  "title": "三星Galaxy S24 Ultra OneUI8 SukiSU Ultra root经验分享",
+  "link": "https://blog.nanoturtle.cn/index.php/2026/07/14/galaxy-s24-ultra-root/",
+  "date": "Mon, 13 Jul 2026 17:44:24 +0000",
+  "desc": "三星Galaxy S24Ultra在OneUI8.0中移除OEM解锁选项，使root难度增加。利用该机型从OneUI6.1到8.0多数版本BIT均为4的可互刷特性，可将OneUI7的abl.elf替换至OneUI8固件，配合Magisk修补vbmeta并保留原厂boot/init_boot，再通过Odin刷入BL和AP完成root。该方案依赖版本匹配与引导替换，避免防回滚机制。 三星Galaxy S24 Ultra OneUI8 SukiSU Ultra root经验分享 最先出现在 NanoTurtle的小窝 。",
+  "cats": [
+   "科技",
+   "三星刷机"
+  ]
+ },
+ {
+  "title": "属于HopeTeams的“Reincarnation”——HopeKit",
+  "link": "https://blog.nanoturtle.cn/index.php/2026/07/12/hopekit-revived/",
+  "date": "Sun, 12 Jul 2026 07:39:39 +0000",
+  "desc": "基于PyQt5/6的桌面UI框架HopeKit从旧项目HopeTeams1.5.6改造而来，核心变动包括将HopeChat组件独立、利用AI完成代码重构并添加qt_compat.py实现PyQt5/6兼容，以及新增左侧菜单栏作为框架固定结构。改造方向是构建多端通用UI框架。 属于HopeTeams的“Reincarnation”——HopeKit 最先出现在 NanoTurtle的小窝 。",
+  "cats": [
+   "科技",
+   "Python"
+  ]
+ },
+ {
+  "title": "9月10日发售《东方红魔乡：新典　～ the Embodiment of Scarlet Devil.》第一弹预告片",
+  "link": "https://blog.nanoturtle.cn/index.php/2026/06/09/touhou-koumakyou-shinten-trailer/",
+  "date": "Tue, 09 Jun 2026 15:05:06 +0000",
+  "desc": "《东方红魔乡：新典》第一弹预告片于9月10日通过上海爱丽丝幻乐团B站官方账号正式公开，确认该数字版游戏将登陆Steam平台。预告片展现了包括博丽灵梦在内的经典角色，重现系列怀旧风格。作者将持续跟进游戏上架动态，为玩家提供最新进展。 9月10日发售《东方红魔乡：新典 ～ the Embodiment of Scarlet Devil.》第一弹预告片 最先出现在 NanoTurtle的小窝 。",
+  "cats": [
+   "东方Project",
+   "Steam",
+   "同人游戏"
+  ]
+ }
+]

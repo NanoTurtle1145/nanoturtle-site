@@ -1,0 +1,13 @@
+{
+  "name": "nanoturtle-site",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "description": "NanoTurtle 个人门户（静态站，构建时抓取博客 RSS）",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/build.mjs --watch --serve",
+    "serve": "node scripts/build.mjs --serve",
+    "deploy": "bash scripts/deploy.sh"
+  }
+}
