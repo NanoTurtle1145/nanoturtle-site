@@ -122,24 +122,35 @@ const fmtDate = (s) => {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 };
 
+const MONTHS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+
 function renderPosts(posts) {
-  if (!posts.length) return '<p class="empty">暂时无法获取博客文章，请稍后访问 <a href="' + SITE.blog + '">博客</a>。</p>';
-  return posts.slice(0, 8).map(p => `
+  if (!posts.length) return '<p class="empty muted">暂时无法获取博客文章，请稍后访问 <a href="' + SITE.blog + '">博客</a>。</p>';
+  return posts.slice(0, 8).map(p => {
+    const d = new Date(p.date);
+    const ok = !Number.isNaN(d.getTime());
+    const day = ok ? String(d.getDate()).padStart(2, '0') : '--';
+    const mon = ok ? MONTHS[d.getMonth()] : '';
+    return `
     <a class="post" href="${esc(p.link)}" target="_blank" rel="noopener">
-      <div class="date">${esc(fmtDate(p.date))}</div>
-      <div class="body">
+      <div class="day"><b>${day}</b><span>${mon}</span></div>
+      <div>
         <h3>${esc(p.title)}</h3>
-        ${p.desc ? `<p>${esc(p.desc.slice(0, 110))}</p>` : ''}
+        ${p.desc ? `<p>${esc(p.desc.slice(0, 100))}</p>` : ''}
       </div>
-    </a>`).join('');
+    </a>`;
+  }).join('');
 }
+
+const ICON = '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"/></svg>';
 
 function renderProjects(list) {
   return list.map(p => `
-    <a class="proj" href="${esc(p.url)}" target="_blank" rel="noopener">
+    <a class="card" href="${esc(p.url)}" target="_blank" rel="noopener">
+      <div class="card-top"><span class="icon">${ICON}</span>${p.stars ? `<span class="label-medium muted">★ ${p.stars}</span>` : ''}</div>
       <h3>${esc(p.title)}</h3>
       <p>${esc(p.desc)}</p>
-      <div class="meta"><span>${esc(p.lang || '')}</span>${p.stars ? `<span>★ ${p.stars}</span>` : ''}</div>
+      <div class="meta">${p.lang ? `<span class="chip">${esc(p.lang)}</span>` : ''}${p.pushed ? `<span class="chip">${esc(p.pushed)}</span>` : ''}</div>
     </a>`).join('');
 }
 
