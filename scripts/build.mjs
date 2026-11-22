@@ -123,36 +123,42 @@ const fmtDate = (s) => {
 };
 
 const MONTHS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+const ICON_BLOG = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-2 12H7v-2h10v2zm0-4H7v-2h10v2zm0-4H7V5h10v2z"/></svg>';
+const ICON_FOLDER = '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-8l-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2z"/></svg>';
+const ICON_CHEVRON = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6 8.6 7.4 13.2 12l-4.6 4.6L10 18l6-6z"/></svg>';
 
 function renderPosts(posts) {
-  if (!posts.length) return '<p class="empty muted">暂时无法获取博客文章，请稍后访问 <a href="' + SITE.blog + '">博客</a>。</p>';
+  if (!posts.length) return '<div class="m3-item"><div></div><div><h3>暂无文章</h3><p>请稍后访问博客</p></div><div></div></div>';
   return posts.slice(0, 8).map(p => {
     const d = new Date(p.date);
     const ok = !Number.isNaN(d.getTime());
     const day = ok ? String(d.getDate()).padStart(2, '0') : '--';
     const mon = ok ? MONTHS[d.getMonth()] : '';
     return `
-    <a class="post" href="${esc(p.link)}" target="_blank" rel="noopener">
-      <div class="day"><b>${day}</b><span>${mon}</span></div>
+    <a class="m3-item" href="${esc(p.link)}" target="_blank" rel="noopener">
+      <div class="lead"><b>${day}</b><span>${mon}</span></div>
       <div>
         <h3>${esc(p.title)}</h3>
-        ${p.desc ? `<p>${esc(p.desc.slice(0, 100))}</p>` : ''}
+        ${p.desc ? `<p>${esc(p.desc.slice(0, 80))}</p>` : ''}
       </div>
+      <span class="go">${ICON_CHEVRON}</span>
     </a>`;
   }).join('');
 }
 
-const ICON = '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"/></svg>';
-
 function renderProjects(list) {
   return list.map(p => `
-    <a class="card" href="${esc(p.url)}" target="_blank" rel="noopener">
-      <div class="card-top"><span class="icon">${ICON}</span>${p.stars ? `<span class="label-medium muted">★ ${p.stars}</span>` : ''}</div>
+    <a class="m3-card" href="${esc(p.url)}" target="_blank" rel="noopener">
+      <div class="head">
+        <span class="ic">${ICON_FOLDER}</span>
+        ${p.stars ? `<span class="chip" style="height:26px;font-size:12px;padding:0 10px">★ ${p.stars}</span>` : ''}
+      </div>
       <h3>${esc(p.title)}</h3>
       <p>${esc(p.desc)}</p>
       <div class="meta">${p.lang ? `<span class="chip">${esc(p.lang)}</span>` : ''}${p.pushed ? `<span class="chip">${esc(p.pushed)}</span>` : ''}</div>
     </a>`).join('');
 }
+
 
 function build({ posts, projects }) {
   ensure(PUBLIC);
